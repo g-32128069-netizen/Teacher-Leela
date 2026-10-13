@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Year 1 Mathematics DLP - Topic 6.0 Measurement Quiz</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Fredoka & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Canvas Confetti for certificate celebration -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#3B82F6',
+                            purple: '#8B5CF6',
+                            pink: '#EC4899',
+                            yellow: '#F59E0B',
+                            green: '#10B981',
+                            teal: '#14B8A6',
+                            bg: '#F0F9FF'
+                        }
+                    },
+                    fontFamily: {
+                        fredoka: ['Fredoka', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F0F9FF;
+            background-image: radial-gradient(#e0f2fe 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
+        }
+        .heading-font {
+            font-family: 'Fredoka', sans-serif;
+        }
+        .option-btn:hover {
+            transform: translateY(-2px);
+        }
+        .certificate-border {
+            border: 12px solid #3B82F6;
+            outline: 4px dashed #F59E0B;
+            outline-offset: -8px;
+        }
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #printable-certificate, #printable-certificate * {
+                visibility: visible;
+            }
+            #printable-certificate {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                margin: 0;
+                padding: 20px;
+                box-shadow: none !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between text-slate-800 antialiased selection:bg-yellow-300">
+
+    <header class="bg-white/80 backdrop-blur-md border-b border-sky-100 sticky top-0 z-30 shadow-sm">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-sky-400 to-blue-600 flex items-center justify-center text-white shadow-md shadow-sky-200">
+                    <i class="fa-solid fa-ruler-combined text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="heading-font text-lg md:text-xl font-bold text-sky-900 leading-tight">Year 1 Math DLP Quiz</h1>
+                    <p class="text-xs text-sky-600 font-medium">Topic 6.0: Measurement (Length, Mass & Volume)</p>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center gap-2 bg-amber-50 border border-amber-200 text-amber-800 text-xs px-3 py-1.5 rounded-full font-semibold">
+                <i class="fa-solid fa-star text-amber-500"></i>
+                <span>DSKP Aligned Review</span>
+            </div>
+            <button onclick="showHostingHelpModal()" class="px-3 py-1.5 bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold rounded-xl shadow-sm transition flex items-center gap-1.5 cursor-pointer">
+                <i class="fa-brands fa-whatsapp text-sm"></i>
+                <span class="hidden sm:inline">Hantar Link WhatsApp</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="max-w-4xl w-full mx-auto p-4 md:p-6 flex-grow flex flex-col justify-center">
+
+        <!-- VIEW 1: START / REGISTRATION CARD -->
+        <div id="start-view" class="bg-white rounded-3xl shadow-xl border border-sky-100 p-6 md:p-10 text-center max-w-2xl mx-auto w-full transform transition-all">
+            <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-sky-100 text-sky-600 mb-4 ring-8 ring-sky-50">
+                <i class="fa-solid fa-shapes text-4xl"></i>
+            </div>
+            <h2 class="heading-font text-2xl md:text-3xl font-bold text-slate-800 mb-2">Mathematics Revision Quiz</h2>
+            <p class="text-slate-600 text-sm md:text-base mb-6 max-w-md mx-auto">
+                Welcome Year 1 DLP pupils! Test your knowledge on <strong>Length, Mass, and Volume of Liquids</strong>. Answer 20 objective questions and earn your Certificate of Achievement!
+            </p>
+
+            <div class="space-y-4 max-w-md mx-auto text-left bg-sky-50/60 p-5 rounded-2xl border border-sky-100 mb-6">
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-sky-900 mb-1">Pupil's Full Name <span class="text-rose-500">*</span></label>
+                    <input type="text" id="pupil-name" placeholder="e.g. Adam Rayyan Bin Rizal" class="w-full px-4 py-3 rounded-xl border border-sky-200 focus:ring-2 focus:ring-sky-400 focus:outline-none text-slate-800 font-medium transition">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-sky-900 mb-1">Class Name <span class="text-rose-500">*</span></label>
+                    <input type="text" id="pupil-class" placeholder="e.g. 1 DLP Bestari" class="w-full px-4 py-3 rounded-xl border border-sky-200 focus:ring-2 focus:ring-sky-400 focus:outline-none text-slate-800 font-medium transition">
+                </div>
+            </div>
+
+            <!-- DSKP Topic Info Badges -->
+            <button id="btn-start" onclick="startQuiz()" class="w-full max-w-md py-4 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-bold rounded-2xl shadow-lg shadow-blue-200 transition-all text-lg flex items-center justify-center gap-2 cursor-pointer mx-auto">
+                <span>Start Quiz Now</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+            <div class="mt-6 pt-6 border-t border-sky-100 text-center">
+                <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">📢 Teacher / Parent Class Group Share</p>
+                <div class="flex flex-wrap justify-center gap-2">
+                    <button onclick="shareQuizToWhatsApp()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl transition flex items-center gap-1.5 cursor-pointer">
+                        <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Group
+                    </button>
+                    <button onclick="shareQuizToTelegram()" class="px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white text-xs font-bold rounded-xl transition flex items-center gap-1.5 cursor-pointer">
+                        <i class="fa-brands fa-telegram text-sm"></i> Telegram Group
+                    </button>
+                    <button onclick="copyQuizLink()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition flex items-center gap-1.5 cursor-pointer">
+                        <i class="fa-solid fa-link"></i> Copy Link
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW 2: ACTIVE QUIZ CARD -->
+        <div id="quiz-view" class="hidden bg-white rounded-3xl shadow-xl border border-sky-100 p-5 md:p-8">
+            <!-- Progress Bar & Question Counter -->
+            <div class="mb-6">
+                <div class="flex justify-between items-center mb-2 text-xs md:text-sm font-semibold text-slate-600">
+                    <span id="question-number-badge" class="bg-sky-100 text-sky-800 px-3 py-1 rounded-full">Question 1 of 20</span>
+                    <span id="score-tracker" class="text-emerald-600 font-bold"><i class="fa-solid fa-trophy mr-1"></i>Score: <span id="current-score">0</span></span>
+                </div>
+                <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden">
+                    <div id="progress-bar" class="bg-gradient-to-r from-sky-400 to-indigo-500 h-full transition-all duration-300" style="width: 5%"></div>
+                </div>
+            </div>
+
+            <!-- Question Box -->
+            <div class="min-h-[120px] mb-4">
+                <span id="subtopic-tag" class="inline-block px-2.5 py-0.5 mb-2 text-[11px] font-bold uppercase tracking-wider rounded-md bg-indigo-50 text-indigo-700 border border-indigo-100">
+                    Vocabulary
+                </span>
+                <h3 id="question-text" class="heading-font text-lg md:text-xl font-bold text-slate-800 leading-snug">
+                    Question text will appear here...
+                </h3>
+            </div>
+
+            <!-- Visual Diagram Container -->
+            <div id="visual-container" class="mb-6 p-4 bg-sky-50/70 border border-sky-100 rounded-2xl flex items-center justify-center min-h-[110px]">
+                <!-- Dynamic SVG Diagram inserted via JS -->
+            </div>
+
+            <!-- Options Grid (A, B, C, D) -->
+            <div id="options-container" class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
+                <!-- Options inserted via JS -->
+            </div>
+
+            <!-- Navigation Controls -->
+            <div class="flex justify-between items-center border-t border-slate-100 pt-4">
+                <button id="btn-prev" onclick="prevQuestion()" class="px-4 py-2.5 rounded-xl border border-slate-200 text-slate-600 font-semibold hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-left"></i> Previous
+                </button>
+                <div class="text-xs text-slate-400 font-medium hidden sm:block">Choose the best answer (A, B, C or D)</div>
+                <button id="btn-next" onclick="nextQuestion()" class="px-6 py-2.5 bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-xl shadow-md shadow-sky-200 transition text-sm flex items-center gap-2 cursor-pointer">
+                    <span>Next</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- VIEW 3: RESULTS SUMMARY CARD -->
+        <div id="result-view" class="hidden bg-white rounded-3xl shadow-xl border border-sky-100 p-6 md:p-10 text-center">
+            <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-tr from-amber-300 to-yellow-500 text-white mb-4 shadow-lg shadow-amber-100 ring-8 ring-amber-50">
+                <i class="fa-solid fa-award text-5xl"></i>
+            </div>
+            
+            <h2 class="heading-font text-3xl font-bold text-slate-800 mb-1">Quiz Completed!</h2>
+            <p class="text-slate-500 text-sm mb-6">Great effort! Here is your performance summary.</p>
+
+            <!-- Score Stats Box -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8 max-w-xl mx-auto">
+                <div class="bg-sky-50 border border-sky-100 p-4 rounded-2xl">
+                    <p class="text-xs text-sky-600 font-semibold uppercase">Total Score</p>
+                    <p id="res-score-number" class="heading-font text-2xl md:text-3xl font-bold text-sky-900 mt-1">0 / 20</p>
+                </div>
+                <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-2xl">
+                    <p class="text-xs text-indigo-600 font-semibold uppercase">Percentage</p>
+                    <p id="res-percentage" class="heading-font text-2xl md:text-3xl font-bold text-indigo-900 mt-1">0%</p>
+                </div>
+                <div class="bg-emerald-50 border border-emerald-100 p-4 rounded-2xl">
+                    <p class="text-xs text-emerald-600 font-semibold uppercase">Correct</p>
+                    <p id="res-correct-count" class="heading-font text-2xl md:text-3xl font-bold text-emerald-700 mt-1">0</p>
+                </div>
+                <div class="bg-rose-50 border border-rose-100 p-4 rounded-2xl">
+                    <p class="text-xs text-rose-600 font-semibold uppercase">Incorrect</p>
+                    <p id="res-wrong-count" class="heading-font text-2xl md:text-3xl font-bold text-rose-700 mt-1">0</p>
+                </div>
+            </div>
+
+            <div id="feedback-message" class="p-4 bg-amber-50 border border-amber-200 rounded-2xl text-amber-900 font-semibold text-sm max-w-xl mx-auto mb-6">
+                Good job! Keep practicing to master all measurement concepts.
+            </div>
+
+            <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-2xl max-w-xl mx-auto mb-8 text-center">
+                <p class="text-xs font-bold text-emerald-800 uppercase tracking-wider mb-2 flex items-center justify-center gap-1.5">
+                    <i class="fa-brands fa-whatsapp text-emerald-600 text-base"></i> Submit Result To Class WhatsApp Group
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-2">
+                    <button onclick="shareResultToWhatsApp()" class="w-full sm:w-auto px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs transition flex items-center justify-center gap-2 cursor-pointer shadow-sm">
+                        <i class="fa-brands fa-whatsapp text-sm"></i> Share Result to WhatsApp
+                    </button>
+                    <button onclick="copyResultSummary()" class="w-full sm:w-auto px-5 py-2.5 bg-emerald-100 hover:bg-emerald-200 text-emerald-800 font-bold rounded-xl text-xs transition flex items-center justify-center gap-2 cursor-pointer">
+                        <i class="fa-solid fa-copy"></i> Copy Score Text
+                    </button>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-3">
+                <button onclick="openCertificateModal()" class="w-full sm:w-auto px-6 py-3.5 bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-white font-bold rounded-xl shadow-lg shadow-amber-200 transition flex items-center justify-center gap-2 cursor-pointer">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span>View & Print Certificate</span>
+                </button>
+                <button onclick="toggleReviewSection()" class="w-full sm:w-auto px-6 py-3.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition flex items-center justify-center gap-2 cursor-pointer">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>Review Answers</span>
+                </button>
+                <button onclick="restartQuiz()" class="w-full sm:w-auto px-6 py-3.5 bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-xl transition flex items-center justify-center gap-2 cursor-pointer">
+                    <i class="fa-solid fa-rotate-right"></i>
+                    <span>Try Again</span>
+                </button>
+            </div>
+
+            <!-- Review Answers List -->
+            <div id="review-section" class="hidden mt-10 text-left border-t border-slate-200 pt-8 max-w-3xl mx-auto">
+                <h3 class="heading-font text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-clipboard-check text-sky-600"></i> Answer Breakdown & Review
+                </h3>
+                <div id="review-container" class="space-y-4">
+                    <!-- Populated via JS -->
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- CERTIFICATE MODAL -->
+    <div id="certificate-modal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="relative bg-white w-full max-w-3xl rounded-2xl shadow-2xl overflow-hidden my-8">
+            <!-- Modal Header Actions -->
+            <div class="bg-slate-100 px-4 py-3 border-b border-slate-200 flex justify-between items-center no-print">
+                <div class="text-xs font-bold text-slate-600 flex items-center gap-1.5">
+                    <i class="fa-solid fa-certificate text-amber-500"></i> Pupil Official Certificate
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="window.print()" class="px-3 py-1.5 bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold rounded-lg shadow transition flex items-center gap-1 cursor-pointer">
+                        <i class="fa-solid fa-print"></i> Print / Save PDF
+                    </button>
+                    <button onclick="closeCertificateModal()" class="px-3 py-1.5 bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-bold rounded-lg transition cursor-pointer">
+                        <i class="fa-solid fa-xmark"></i> Close
+                    </button>
+                </div>
+            </div>
+
+            <!-- Certificate Canvas Printable Area -->
+            <div id="printable-certificate" class="p-8 md:p-12 bg-white certificate-border text-center relative overflow-hidden">
+                <!-- Background Seal Watermark -->
+                <div class="absolute -right-10 -bottom-10 opacity-5 pointer-events-none">
+                    <i class="fa-solid fa-award text-[280px] text-sky-900"></i>
+                </div>
+
+                <!-- Ribbon/Icon -->
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-tr from-amber-400 to-yellow-500 text-white mb-3 shadow-md">
+                    <i class="fa-solid fa-medal text-3xl"></i>
+                </div>
+
+                <p class="text-xs md:text-sm uppercase font-bold tracking-widest text-sky-600 mb-1">Sekolah Kebangsaan (DLP Program) • Cikgu Leela</p>
+                <h2 class="heading-font text-2xl md:text-4xl font-extrabold text-slate-900 tracking-wide mb-1">CERTIFICATE OF ACHIEVEMENT</h2>
+                <p class="text-xs md:text-sm text-slate-500 italic mb-6">This is to proudly certify that</p>
+
+                <!-- Student Name & Class -->
+                <div class="border-b-2 border-sky-300 pb-2 mb-4 max-w-lg mx-auto">
+                    <h3 id="cert-pupil-name" class="heading-font text-2xl md:text-3xl font-bold text-sky-900 capitalize">Student Name</h3>
+                </div>
+                <p class="text-xs text-slate-600 font-semibold mb-6">
+                    Class: <span id="cert-pupil-class" class="text-slate-800">1 DLP</span>
+                </p>
+
+                <!-- Achievement Description -->
+                <p class="text-xs md:text-sm text-slate-700 max-w-lg mx-auto leading-relaxed mb-6">
+                    has successfully completed the <strong>Year 1 Mathematics Dual Language Programme (DLP) Revision Quiz</strong> for <strong>Topic 6.0: Measurement</strong> with outstanding effort and enthusiasm.
+                </p>
+
+                <!-- Score Box -->
+                <div class="inline-block bg-sky-50 border-2 border-sky-200 px-6 py-3 rounded-2xl mb-8">
+                    <div class="flex items-center justify-center gap-6">
+                        <div>
+                            <span class="block text-[10px] uppercase font-bold text-sky-600 tracking-wider">Final Score</span>
+                            <span id="cert-score-text" class="heading-font text-xl md:text-2xl font-bold text-sky-900">18 / 20</span>
+                        </div>
+                        <div class="w-px h-8 bg-sky-200"></div>
+                        <div>
+                            <span class="block text-[10px] uppercase font-bold text-sky-600 tracking-wider">Grade</span>
+                            <span id="cert-grade-text" class="heading-font text-xl md:text-2xl font-bold text-emerald-600">Excellent</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Signatures & Creator Credits -->
+                <div class="flex justify-between items-end pt-6 border-t border-slate-200 text-left text-xs">
+                    <div>
+                        <p class="font-bold text-slate-700">Date Issued:</p>
+                        <p id="cert-date" class="text-slate-500">October 13, 2026</p>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="w-24 border-b border-slate-400 mb-1 mx-auto"></div>
+                        <p class="font-bold text-slate-800">Mathematics DLP Panel</p>
+                    </div>
+
+                    <!-- MANDATORY CREATOR FOOTER ON BOTTOM RIGHT -->
+                    <div class="text-right">
+                        <p class="text-[11px] font-semibold text-slate-500">Prepared by:</p>
+                        <p class="heading-font font-bold text-sm text-sky-900">Cikgu Leela</p>
+                        <p class="text-[10px] text-slate-500 font-bold">Disediakan Oleh: Cikgu Leela</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Page Footer -->
+    <footer class="bg-white border-t border-sky-100 py-4 mt-8">
+        <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-2">
+            <div>
+                <span>© Year 1 Mathematics DLP • DSKP Topic 6.0 Measurement</span>
+            </div>
+            <!-- MANDATORY BOTTOM RIGHT CREATOR -->
+            <div class="font-semibold text-sky-800 bg-sky-50 px-3 py-1 rounded-full border border-sky-200">
+                Disediakan Oleh: <span class="font-bold text-sky-900">Cikgu Leela</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentQuestionIndex = 0;
+        let userAnswers = new Array(20).fill(null);
+        let pupilName = "";
+        let pupilClass = "";
+
+        const quizData = [
+            {
+                subtopic: "Length Vocabulary",
+                question: "Look at the two trees. Tree A is ______ than Tree B.",
+                visualType: "trees_compare",
+                options: ["taller", "shorter", "heavier", "lighter"],
+                correct: 0,
+                explanation: "Tree A extends higher vertically compared to Tree B, so Tree A is taller."
+            },
+            {
+                subtopic: "Measuring Length",
+                question: "The length of the crayon is equal to ______ paperclips.",
+                visualType: "crayon_clips",
+                options: ["3", "4", "5", "6"],
+                correct: 2,
+                explanation: "Counting the aligned paperclips from end to end under the crayon gives 5 paperclips."
+            },
+            {
+                subtopic: "Mass Vocabulary",
+                question: "On the balance scale, Object A moves down. This means Object A is ______ than Object B.",
+                visualType: "balance_scale",
+                options: ["lighter", "heavier", "longer", "shorter"],
+                correct: 1,
+                explanation: "The side of a balance scale that goes down carries the heavier object."
+            },
+            {
+                subtopic: "Mass Vocabulary",
+                question: "Which of the following objects is the LIGHTEST?",
+                visualType: "icon_objects",
+                options: ["Teacher's Desk", "School Bag", "Feather", "Bicycle"],
+                correct: 2,
+                explanation: "A feather weighs very little compared to desks, bags, and bicycles."
+            },
+            {
+                subtopic: "Measuring Mass",
+                question: "The mass of 1 Papaya equals 8 blocks. The mass of 1 Apple equals 3 blocks. The papaya is ______ than the apple.",
+                visualType: "blocks_mass",
+                options: ["lighter", "heavier", "shorter", "taller"],
+                correct: 1,
+                explanation: "8 blocks is greater than 3 blocks, making the papaya heavier than the apple."
+            },
+            {
+                subtopic: "Liquid Volume",
+                question: "An empty glass has ______ liquid inside.",
+                visualType: "empty_glass",
+                options: ["full", "half", "no", "a lot of"],
+                correct: 2,
+                explanation: "Empty means containing no liquid at all."
+            },
+            {
+                subtopic: "Liquid Volume",
+                question: "Jug X holds 5 cups of water. Jug Y holds 2 cups of water. Jug X holds ______ water than Jug Y.",
+                visualType: "jugs_compare",
+                options: ["less", "more", "the same", "fewer"],
+                correct: 1,
+                explanation: "5 cups is more than 2 cups."
+            },
+            {
+                subtopic: "Measuring Volume",
+                question: "1 Teapot can fill 6 cups of tea. What is the capacity of the teapot?",
+                visualType: "teapot_cups",
+                options: ["4 cups", "5 cups", "6 cups", "8 cups"],
+                correct: 2,
+                explanation: "The volume of liquid needed to fill the teapot is 6 cups."
+            },
+            {
+                subtopic: "Comparing Length",
+                question: "Ribbon A is 6 matchsticks long. Ribbon B is 4 matchsticks long. Ribbon C is 8 matchsticks long. Which ribbon is the SHORTEST?",
+                visualType: "ribbons_compare",
+                options: ["Ribbon A", "Ribbon B", "Ribbon C", "Ribbon A & C"],
+                correct: 1,
+                explanation: "4 matchsticks is the smallest length, so Ribbon B is the shortest."
+            },
+            {
+                subtopic: "Comparing Mass",
+                question: "Toy Car = 4 marbles. Toy Bus = 9 marbles. The Toy Bus is ______ than the Toy Car.",
+                visualType: "toys_mass",
+                options: ["lighter", "heavier", "shorter", "smaller"],
+                correct: 1,
+                explanation: "9 marbles is heavier than 4 marbles."
+            },
+            {
+                subtopic: "Non-standard Units",
+                question: "Which body part unit is called a 'Handspan' (Jengkal)?",
+                visualType: "handspan",
+                options: ["Distance between outstretched arms", "Distance from outstretched thumb to little finger", "Length of a foot", "One step stride"],
+                correct: 1,
+                explanation: "A handspan (jengkal) is measured from the tip of the thumb to the tip of the little finger."
+            },
+            {
+                subtopic: "Measuring Length",
+                question: "An eraser covers 4 unit grid squares. What is its length in units?",
+                visualType: "eraser_grid",
+                options: ["2 units", "3 units", "4 units", "5 units"],
+                correct: 2,
+                explanation: "It spans across 4 grid squares, so its length is 4 units."
+            },
+            {
+                subtopic: "Liquid Volume",
+                question: "A water bottle filled up to the middle line is ______.",
+                visualType: "half_bottle",
+                options: ["completely full", "half full", "completely empty", "overflowing"],
+                correct: 1,
+                explanation: "When water reaches the midpoint mark, the bottle is half full."
+            },
+            {
+                subtopic: "Problem Solving",
+                question: "Ali's toy train is 10 blocks long. Siti's train is 3 blocks shorter than Ali's. How long is Siti's train?",
+                visualType: "train_blocks",
+                options: ["13 blocks", "7 blocks", "8 blocks", "6 blocks"],
+                correct: 1,
+                explanation: "10 minus 3 = 7 blocks."
+            },
+            {
+                subtopic: "Problem Solving",
+                question: "A crayon box weighs 5 units. A pencil box weighs 2 units. What is their TOTAL mass together?",
+                visualType: "total_mass",
+                options: ["3 units", "5 units", "7 units", "10 units"],
+                correct: 2,
+                explanation: "5 units + 2 units = 7 units."
+            },
+            {
+                subtopic: "Problem Solving",
+                question: "A jug has enough juice for 8 glasses. 3 glasses of juice are poured out. How many glasses of juice remain in the jug?",
+                visualType: "jug_pouring",
+                options: ["5 glasses", "4 glasses", "11 glasses", "3 glasses"],
+                correct: 0,
+                explanation: "8 minus 3 = 5 glasses remaining."
+            },
+            {
+                subtopic: "Comparing Volume",
+                question: "Bucket A holds 10 cups. Bucket B holds 15 cups. Bucket C holds 12 cups. Which bucket has the MOST capacity?",
+                visualType: "buckets_compare",
+                options: ["Bucket A", "Bucket B", "Bucket C", "Bucket A & C"],
+                correct: 1,
+                explanation: "15 cups is the greatest volume among 10, 15, and 12."
+            },
+            {
+                subtopic: "Distance Concept",
+                question: "The distance from home to school takes 30 minutes to walk. The distance is considered ______.",
+                visualType: "distance_icon",
+                options: ["near", "far", "heavy", "light"],
+                correct: 1,
+                explanation: "A long walking time indicates that the school is far from home."
+            },
+            {
+                subtopic: "Comparing Length",
+                question: "A pencil is 4 paperclips long. A paintbrush is 8 paperclips long. The paintbrush is ______ the pencil.",
+                visualType: "pencil_paintbrush",
+                options: ["shorter than", "longer than", "same length as", "lighter than"],
+                correct: 1,
+                explanation: "8 paperclips is longer than 4 paperclips."
+            },
+            {
+                subtopic: "Mass Concept",
+                question: "Complete the statement: A feather is light, but a large boulder is ______.",
+                visualType: "icon_objects",
+                options: ["short", "tall", "heavy", "empty"],
+                correct: 2,
+                explanation: "Heavy is the opposite of light when measuring mass."
+            }
+        ];
+
+        function startQuiz() {
+            const nameInput = document.getElementById('pupil-name').value.trim();
+            const classInput = document.getElementById('pupil-class').value.trim();
+
+            if (!nameInput || !classInput) {
+                alertCustom("Please fill in both your Name and Class before starting!");
+                return;
+            }
+
+            pupilName = nameInput;
+            pupilClass = classInput;
+            currentQuestionIndex = 0;
+            userAnswers = new Array(quizData.length).fill(null);
+
+            document.getElementById('start-view').classList.add('hidden');
+            document.getElementById('quiz-view').classList.remove('hidden');
+
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const q = quizData[currentQuestionIndex];
+            
+            document.getElementById('question-number-badge').innerText = `Question ${currentQuestionIndex + 1} of ${quizData.length}`;
+            document.getElementById('subtopic-tag').innerText = q.subtopic;
+            document.getElementById('question-text').innerText = q.question;
+            
+            const progressPct = ((currentQuestionIndex + 1) / quizData.length) * 100;
+            document.getElementById('progress-bar').style.width = `${progressPct}%`;
+
+            document.getElementById('current-score').innerText = calculateCurrentScore();
+
+            const visualContainer = document.getElementById('visual-container');
+            visualContainer.innerHTML = getVisualSvg(q.visualType);
+
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+
+            const optionPrefixes = ['A', 'B', 'C', 'D'];
+            const optionColors = [
+                'hover:border-sky-400 hover:bg-sky-50/50',
+                'hover:border-indigo-400 hover:bg-indigo-50/50',
+                'hover:border-amber-400 hover:bg-amber-50/50',
+                'hover:border-emerald-400 hover:bg-emerald-50/50'
+            ];
+
+            q.options.forEach((opt, idx) => {
+                const isSelected = userAnswers[currentQuestionIndex] === idx;
+                const btn = document.createElement('button');
+                btn.onclick = () => selectOption(idx);
+                btn.className = `option-btn w-full p-4 rounded-2xl border-2 text-left font-semibold text-sm transition-all flex items-center justify-between cursor-pointer ${
+                    isSelected
+                        ? 'border-sky-600 bg-sky-100 text-sky-950 shadow-md ring-2 ring-sky-300'
+                        : `border-slate-200 bg-white text-slate-700 ${optionColors[idx]}`
+                }`;
+
+                btn.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-xl flex items-center justify-center font-bold text-xs ${
+                            isSelected ? 'bg-sky-600 text-white' : 'bg-slate-100 text-slate-600'
+                        }">
+                            ${optionPrefixes[idx]}
+                        </span>
+                        <span>${opt}</span>
+                    </div>
+                    ${isSelected ? '<i class="fa-solid fa-circle-check text-sky-600 text-lg"></i>' : ''}
+                `;
+                optionsContainer.appendChild(btn);
+            });
+
+            document.getElementById('btn-prev').disabled = currentQuestionIndex === 0;
+            const nextBtn = document.getElementById('btn-next');
+            if (currentQuestionIndex === quizData.length - 1) {
+                nextBtn.innerHTML = `<span>Submit Quiz</span> <i class="fa-solid fa-check"></i>`;
+                nextBtn.className = "px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-md transition text-sm flex items-center gap-2 cursor-pointer";
+            } else {
+                nextBtn.innerHTML = `<span>Next</span> <i class="fa-solid fa-arrow-right"></i>`;
+                nextBtn.className = "px-6 py-2.5 bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-xl shadow-md shadow-sky-200 transition text-sm flex items-center gap-2 cursor-pointer";
+            }
+        }
+
+        function alertCustom(message) {
+            const existingModal = document.getElementById('custom-alert-modal');
+            if (existingModal) existingModal.remove();
+
+            const modal = document.createElement('div');
+            modal.id = 'custom-alert-modal';
+            modal.className = "fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in";
+            modal.innerHTML = `
+                <div class="bg-white rounded-2xl p-6 max-w-sm w-full text-center shadow-2xl border border-sky-100">
+                    <div class="w-12 h-12 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center mx-auto mb-3">
+                        <i class="fa-solid fa-triangle-exclamation text-xl"></i>
+                    </div>
+                    <p class="text-sm font-semibold text-slate-800 mb-5 leading-relaxed">${message}</p>
+                    <button onclick="this.closest('#custom-alert-modal').remove()" class="w-full py-2.5 bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-xl text-xs transition cursor-pointer">
+                        OK
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        function getQuizShareTextMalay() {
+            return `*JOM BUAT KUIZ MATEMATIK TAHUN 1 (DLP)* ✏️📐\n\n` +
+                   `Salam sejahtera / Selamat sejahtera ibu bapa & murid-murid,\n\n` +
+                   `Berikut ialah pautan Kuiz Ulang Kaji Matematik DLP bagi *Topik 6.0: Ukuran & Sukatan (Length, Mass & Volume)*.\n\n` +
+                   `📌 *Info Kuiz:*\n` +
+                   `• 20 Soalan Objektif (DSKP Aligned)\n` +
+                   `• Murid akan mendapat *Sijil Pencapaian Rasmi* setelah selesai!\n` +
+                   `• Disediakan Oleh: *Cikgu Leela*\n\n` +
+                   `👉 *Sila tekan pautan di bawah untuk mula:* \n` +
+                   `${window.location.href.startsWith('blob:') ? '[MASUKKAN_LINK_KUIZ_ANDA]' : window.location.href}`;
+        }
+
+        function showHostingHelpModal() {
+            const modal = document.createElement('div');
+            modal.className = "fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto";
+            modal.innerHTML = `
+                <div class="bg-white rounded-3xl p-6 md:p-8 max-w-xl w-full text-left shadow-2xl border border-sky-100 relative my-8">
+                    <button onclick="this.closest('.fixed').remove()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold flex items-center justify-center cursor-pointer">
+                        ✕
+                    </button>
+                    
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-gift text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="heading-font text-lg md:text-xl font-bold text-slate-800">Cara Kongsi Kuiz PERCUMA 100% (RM 0)</h3>
+                            <p class="text-xs text-emerald-700 font-medium">Panduan Tanpa Bayaran Disediakan Oleh Cikgu Leela</p>
+                        </div>
+                    </div>
+
+                    <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-2xl mb-4 text-xs text-emerald-950 leading-relaxed">
+                        💡 <strong>Tidak perlu bayar apa-apa!</strong> Gunakan salah satu cara percuma sepenuhnya di bawah untuk dihantar kepada ibu bapa & murid:
+                    </div>
+
+                    <div class="space-y-3 mb-5 text-xs text-slate-700">
+                        <div class="p-3.5 bg-emerald-50/80 rounded-2xl border border-emerald-300 flex items-start gap-3">
+                            <div class="w-7 h-7 rounded-full bg-emerald-600 text-white font-bold flex-shrink-0 flex items-center justify-center text-xs shadow">1</div>
+                            <div>
+                                <strong class="text-emerald-900 font-bold text-sm">Cara 1: Hantar Fail HTML Terus Ke WhatsApp (Paling Senang & RM0!)</strong>
+                                <p class="text-slate-600 mt-1">Muat turun fail <code class="bg-emerald-100 text-emerald-900 font-bold px-1.5 py-0.5 rounded">index.html</code> di bawah. Kemudian, hantar fail tersebut sebagai <strong>Document / Attachment</strong> terus ke Group WhatsApp Kelas. Ibu bapa hanya perlu tekan fail tersebut dan kuiz akan terbuka serta-merta tanpa sebarang bayaran!</p>
+                                <button onclick="downloadQuizHtml()" class="mt-2.5 px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl transition inline-flex items-center gap-1.5 cursor-pointer text-xs shadow-md shadow-emerald-200">
+                                    <i class="fa-solid fa-download"></i> Muat Turun Fail Kuiz (.html)
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="p-3.5 bg-sky-50 rounded-2xl border border-sky-200 flex items-start gap-3">
+                            <div class="w-7 h-7 rounded-full bg-sky-600 text-white font-bold flex-shrink-0 flex items-center justify-center text-xs shadow">2</div>
+                            <div>
+                                <strong class="text-sky-900 font-bold text-sm">Cara 2: Dapatkan Link Web Kekal Percuma (GitHub / Netlify)</strong>
+                                <p class="text-slate-600 mt-1">Gunakan platform hos percuma seperti <a href="https://pages.github.com" target="_blank" class="text-sky-600 font-bold underline">GitHub Pages</a> atau akaun percuma <a href="https://www.netlify.com" target="_blank" class="text-sky-600 font-bold underline">Netlify Free</a>. Upload fail <code class="font-bold">index.html</code> untuk mendapatkan link kekal selamanya tanpa sebarang had masa atau bayaran.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-5">
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">📋 Mesej Templat WhatsApp Ibu Bapa:</label>
+                        <textarea id="whatsapp-template-text" rows="5" class="w-full p-3 text-xs bg-slate-50 border border-slate-200 rounded-xl font-sans text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500">${getQuizShareTextMalay()}</textarea>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-2">
+                        <button onclick="copyWhatsAppMessage()" class="flex-1 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs transition flex items-center justify-center gap-2 cursor-pointer shadow-md shadow-emerald-200">
+                            <i class="fa-brands fa-whatsapp text-sm"></i> Salin Teks & Buka WhatsApp
+                        </button>
+                        <button onclick="this.closest('.fixed').remove()" class="px-5 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs transition cursor-pointer">
+                            Tutup
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        function copyWhatsAppMessage() {
+            const textarea = document.getElementById('whatsapp-template-text');
+            if (textarea) {
+                textarea.select();
+                document.execCommand('copy');
+                alertCustom('Mesej templat telah disalin! Anda boleh terus Tampal (Paste) di WhatsApp Class Group.');
+                const encodedText = encodeURIComponent(textarea.value);
+                window.open(`https://api.whatsapp.com/send?text=${encodedText}`, '_blank');
+            }
+        }
+
+        function selectOption(optionIndex) {
+            userAnswers[currentQuestionIndex] = optionIndex;
+            renderQuestion();
+        }
+
+        function nextQuestion() {
+            if (userAnswers[currentQuestionIndex] === null) {
+                alertCustom("Please choose an answer (A, B, C or D) before proceeding!");
+                return;
+            }
+
+            if (currentQuestionIndex < quizData.length - 1) {
+                currentQuestionIndex++;
+                renderQuestion();
+            } else {
+                finishQuiz();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                renderQuestion();
+            }
+        }
+
+        function calculateCurrentScore() {
+            let score = 0;
+            userAnswers.forEach((ans, idx) => {
+                if (ans === quizData[idx].correct) score++;
+            });
+            return score;
+        }
+
+        function getVisualSvg(type) {
+            switch(type) {
+                case "trees_compare":
+                    return `
+                        <div class="flex items-end justify-center gap-12 py-2">
+                            <div class="text-center">
+                                <svg class="w-16 h-28 mx-auto" viewBox="0 0 100 160">
+                                    <rect x="42" y="90" width="16" height="70" fill="#8B4513" rx="4"/>
+                                    <circle cx="50" cy="65" r="45" fill="#10B981"/>
+                                    <circle cx="30" cy="50" r="30" fill="#34D399"/>
+                                </svg>
+                                <span class="block mt-1 font-bold text-sm bg-sky-200 text-sky-900 px-3 py-0.5 rounded-full">Tree A</span>
+                            </div>
+                            <div class="text-center">
+                                <svg class="w-12 h-16 mx-auto" viewBox="0 0 100 100">
+                                    <rect x="42" y="50" width="16" height="50" fill="#8B4513" rx="4"/>
+                                    <circle cx="50" cy="40" r="30" fill="#10B981"/>
+                                </svg>
+                                <span class="block mt-1 font-bold text-sm bg-slate-200 text-slate-800 px-3 py-0.5 rounded-full">Tree B</span>
+                            </div>
+                        </div>
+                    `;
+                case "pencil_ruler":
+                    return `
+                        <div class="flex flex-col gap-3 w-full max-w-xs mx-auto">
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs font-bold w-14">Pencil:</span>
+                                <div class="h-5 bg-amber-400 rounded-r-md border border-amber-600 w-2/5 flex items-center justify-end px-1 text-[10px] font-bold text-amber-900">✏️</div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs font-bold w-14">Ruler:</span>
+                                <div class="h-6 bg-sky-300 rounded border border-sky-500 w-full flex items-center justify-between px-2 text-[10px] text-sky-900 font-mono">
+                                    <span>|</span><span>|</span><span>|</span><span>|</span><span>|</span><span>|</span><span>|</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                case "crayon_clips":
+                    return `
+                        <div class="w-full flex flex-col items-center justify-center p-2">
+                            <svg class="w-full max-w-lg h-auto" viewBox="0 0 520 150" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="0" y="0" width="520" height="150" fill="#F8FAFC" rx="12" stroke="#E2E8F0" stroke-width="2"/>
+                                <line x1="10" y1="10" x2="10" y2="140" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="4 4"/>
+                                <line x1="110" y1="10" x2="110" y2="140" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="4 4"/>
+                                <line x1="210" y1="10" x2="210" y2="140" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="4 4"/>
+                                <line x1="310" y1="10" x2="310" y2="140" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="4 4"/>
+                                <line x1="410" y1="10" x2="410" y2="140" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="4 4"/>
+                                <line x1="510" y1="10" x2="510" y2="140" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="4 4"/>
+                                <polygon points="10,35 60,15 60,55" fill="#E11D48"/>
+                                <rect x="60" y="15" width="440" height="40" fill="#F43F5E" rx="3"/>
+                                <rect x="80" y="22" width="400" height="26" fill="#FB7185" rx="2"/>
+                                <text x="280" y="39" text-anchor="middle" fill="#FFFFFF" font-family="Fredoka, sans-serif" font-size="16" font-weight="bold" letter-spacing="2">🖍️ CRAYON</text>
+                                <rect x="490" y="15" width="10" height="40" fill="#BE123C" rx="2"/>
+                                <g transform="translate(10, 72)">
+                                    <rect x="5" y="0" width="90" height="32" rx="16" fill="#E0F2FE" stroke="#0284C7" stroke-width="4"/>
+                                    <rect x="15" y="6" width="70" height="20" rx="10" fill="none" stroke="#0284C7" stroke-width="3"/>
+                                    <text x="50" y="55" text-anchor="middle" fill="#0369A1" font-family="Fredoka, sans-serif" font-size="13" font-weight="bold">Clip 1</text>
+                                </g>
+                                <g transform="translate(110, 72)">
+                                    <rect x="5" y="0" width="90" height="32" rx="16" fill="#E0F2FE" stroke="#0284C7" stroke-width="4"/>
+                                    <rect x="15" y="6" width="70" height="20" rx="10" fill="none" stroke="#0284C7" stroke-width="3"/>
+                                    <text x="50" y="55" text-anchor="middle" fill="#0369A1" font-family="Fredoka, sans-serif" font-size="13" font-weight="bold">Clip 2</text>
+                                </g>
+                                <g transform="translate(210, 72)">
+                                    <rect x="5" y="0" width="90" height="32" rx="16" fill="#E0F2FE" stroke="#0284C7" stroke-width="4"/>
+                                    <rect x="15" y="6" width="70" height="20" rx="10" fill="none" stroke="#0284C7" stroke-width="3"/>
+                                    <text x="50" y="55" text-anchor="middle" fill="#0369A1" font-family="Fredoka, sans-serif" font-size="13" font-weight="bold">Clip 3</text>
+                                </g>
+                                <g transform="translate(310, 72)">
+                                    <rect x="5" y="0" width="90" height="32" rx="16" fill="#E0F2FE" stroke="#0284C7" stroke-width="4"/>
+                                    <rect x="15" y="6" width="70" height="20" rx="10" fill="none" stroke="#0284C7" stroke-width="3"/>
+                                    <text x="50" y="55" text-anchor="middle" fill="#0369A1" font-family="Fredoka, sans-serif" font-size="13" font-weight="bold">Clip 4</text>
+                                </g>
+                                <g transform="translate(410, 72)">
+                                    <rect x="5" y="0" width="90" height="32" rx="16" fill="#E0F2FE" stroke="#0284C7" stroke-width="4"/>
+                                    <rect x="15" y="6" width="70" height="20" rx="10" fill="none" stroke="#0284C7" stroke-width="3"/>
+                                    <text x="50" y="55" text-anchor="middle" fill="#0369A1" font-family="Fredoka, sans-serif" font-size="13" font-weight="bold">Clip 5</text>
+                                </g>
+                            </svg>
+                        </div>
+                    `;
+                case "balance_scale":
+                    return `
+                        <svg class="w-64 h-24" viewBox="0 0 200 80">
+                            <polygon points="100,70 90,80 110,80" fill="#64748B"/>
+                            <line x1="100" y1="40" x2="100" y2="70" stroke="#64748B" stroke-width="4"/>
+                            <line x1="30" y1="55" x2="170" y2="25" stroke="#334155" stroke-width="4"/>
+                            <line x1="30" y1="55" x2="30" y2="70" stroke="#94A3B8" stroke-width="2"/>
+                            <rect x="15" y="65" width="30" height="12" fill="#EC4899" rx="3"/>
+                            <text x="30" y="74" text-anchor="middle" fill="white" font-size="9" font-weight="bold">A</text>
+                            <line x1="170" y1="25" x2="170" y2="40" stroke="#94A3B8" stroke-width="2"/>
+                            <circle cx="170" cy="35" r="8" fill="#3B82F6"/>
+                            <text x="170" y="38" text-anchor="middle" fill="white" font-size="9" font-weight="bold">B</text>
+                        </svg>
+                    `;
+                case "icon_objects":
+                    return `
+                        <div class="flex gap-6 text-2xl justify-center items-center">
+                            <div class="p-2 bg-white rounded-xl border border-slate-200 shadow-sm text-center"><span class="block">🪑</span><span class="text-[10px] font-bold">Desk</span></div>
+                            <div class="p-2 bg-white rounded-xl border border-slate-200 shadow-sm text-center"><span class="block">🎒</span><span class="text-[10px] font-bold">Bag</span></div>
+                            <div class="p-2 bg-sky-100 border-2 border-sky-400 rounded-xl shadow-sm text-center"><span class="block">🪶</span><span class="text-[10px] font-bold text-sky-900">Feather</span></div>
+                            <div class="p-2 bg-white rounded-xl border border-slate-200 shadow-sm text-center"><span class="block">🚲</span><span class="text-[10px] font-bold">Bicycle</span></div>
+                        </div>
+                    `;
+                case "blocks_mass":
+                    return `
+                        <div class="flex justify-center gap-8 items-center text-xs font-semibold">
+                            <div class="text-center p-2 bg-white rounded-xl border border-slate-200">
+                                🍎 Apple = 3 🧱
+                            </div>
+                            <div class="text-center p-2 bg-amber-50 rounded-xl border border-amber-300">
+                                🍈 Papaya = 8 🧱
+                            </div>
+                        </div>
+                    `;
+                case "empty_glass":
+                    return `
+                        <div class="flex flex-col items-center">
+                            <svg class="w-16 h-20" viewBox="0 0 60 80">
+                                <path d="M10 10 L20 70 L40 70 L50 10 Z" fill="none" stroke="#0EA5E9" stroke-width="3" rx="2"/>
+                            </svg>
+                            <span class="text-xs font-bold text-slate-500 mt-1">Empty Glass</span>
+                        </div>
+                    `;
+                case "jugs_compare":
+                    return `
+                        <div class="flex gap-8 justify-center items-center">
+                            <div class="text-center">
+                                <div class="text-3xl">🥛</div>
+                                <span class="text-xs font-bold bg-sky-100 text-sky-800 px-2 py-0.5 rounded">Jug X (5 cups)</span>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl opacity-70">🥛</div>
+                                <span class="text-xs font-bold bg-slate-100 text-slate-700 px-2 py-0.5 rounded">Jug Y (2 cups)</span>
+                            </div>
+                        </div>
+                    `;
+                case "teapot_cups":
+                    return `
+                        <div class="flex items-center gap-3 justify-center">
+                            <div class="text-3xl">🫖</div>
+                            <span class="text-xs font-bold">=</span>
+                            <div class="flex gap-1 text-base">☕☕☕☕☕☕</div>
+                        </div>
+                    `;
+                case "ribbons_compare":
+                    return `
+                        <div class="space-y-1.5 text-xs font-bold max-w-xs mx-auto">
+                            <div class="flex items-center gap-2"><span>Ribbon A:</span> <div class="h-3 bg-red-400 w-24 rounded"></div> (6 matchsticks)</div>
+                            <div class="flex items-center gap-2"><span>Ribbon B:</span> <div class="h-3 bg-blue-400 w-16 rounded"></div> (4 matchsticks)</div>
+                            <div class="flex items-center gap-2"><span>Ribbon C:</span> <div class="h-3 bg-green-400 w-32 rounded"></div> (8 matchsticks)</div>
+                        </div>
+                    `;
+                case "toys_mass":
+                    return `
+                        <div class="flex justify-center gap-6 text-xs font-bold">
+                            <div class="p-2 bg-white rounded-xl border border-slate-200">🚗 Toy Car = 4 Marbles ⚪</div>
+                            <div class="p-2 bg-sky-50 rounded-xl border border-sky-300">🚌 Toy Bus = 9 Marbles ⚪</div>
+                        </div>
+                    `;
+                case "handspan":
+                    return `
+                        <div class="text-center">
+                            <span class="text-4xl block">🖐️</span>
+                            <span class="text-xs font-bold text-sky-900 mt-1 block">Handspan (Jengkal)</span>
+                        </div>
+                    `;
+                case "eraser_grid":
+                    return `
+                        <div class="flex flex-col items-center gap-1">
+                            <div class="h-6 bg-pink-400 border border-pink-600 rounded w-32 flex items-center justify-center text-xs text-white font-bold">Eraser</div>
+                            <div class="grid grid-cols-4 gap-0.5 w-32">
+                                <div class="h-4 bg-slate-200 border border-slate-300 text-[9px] flex items-center justify-center">1</div>
+                                <div class="h-4 bg-slate-200 border border-slate-300 text-[9px] flex items-center justify-center">2</div>
+                                <div class="h-4 bg-slate-200 border border-slate-300 text-[9px] flex items-center justify-center">3</div>
+                                <div class="h-4 bg-slate-200 border border-slate-300 text-[9px] flex items-center justify-center">4</div>
+                            </div>
+                        </div>
+                    `;
+                case "half_bottle":
+                    return `
+                        <div class="flex flex-col items-center">
+                            <svg class="w-12 h-20" viewBox="0 0 40 70">
+                                <rect x="12" y="2" width="16" height="8" fill="#38BDF8" rx="1"/>
+                                <rect x="8" y="10" width="24" height="55" fill="none" stroke="#0284C7" stroke-width="2" rx="3"/>
+                                <rect x="9" y="38" width="22" height="26" fill="#38BDF8" rx="1"/>
+                            </svg>
+                            <span class="text-xs font-bold text-sky-800 mt-1">Half Full Bottle</span>
+                        </div>
+                    `;
+                case "train_blocks":
+                    return `
+                        <div class="flex items-center gap-3 text-xs font-bold justify-center">
+                            <div class="bg-blue-100 p-2 rounded-xl">🚂 Ali's Train: 10 Blocks</div>
+                            <div class="bg-amber-100 p-2 rounded-xl">🚂 Siti's Train: 3 blocks shorter</div>
+                        </div>
+                    `;
+                case "total_mass":
+                    return `
+                        <div class="flex gap-4 justify-center items-center text-xs font-bold">
+                            <div>🖍️ Crayons: 5 blocks</div>
+                            <div>+</div>
+                            <div>✏️ Pencil Box: 2 blocks</div>
+                        </div>
+                    `;
+                case "jug_pouring":
+                    return `
+                        <div class="flex items-center gap-3 text-xs font-bold justify-center">
+                            <div>🫗 Jug holds 8 glasses</div>
+                            <div>➜ Poured out 3 glasses</div>
+                        </div>
+                    `;
+                case "buckets_compare":
+                    return `
+                        <div class="flex gap-4 text-xs font-bold justify-center">
+                            <div class="p-2 bg-slate-100 rounded-lg">Bucket A: 10 🥤</div>
+                            <div class="p-2 bg-sky-100 border border-sky-300 rounded-lg">Bucket B: 15 🥤</div>
+                            <div class="p-2 bg-slate-100 rounded-lg">Bucket C: 12 🥤</div>
+                        </div>
+                    `;
+                case "distance_icon":
+                    return `
+                        <div class="flex items-center gap-6 text-xl">
+                            <span>🏠 Home</span>
+                            <span class="text-xs font-bold text-slate-400">----------------- 🛣️ -----------------</span>
+                            <span>🏫 School</span>
+                        </div>
+                    `;
+                case "pencil_paintbrush":
+                    return `
+                        <div class="space-y-2 text-xs font-bold max-w-xs mx-auto">
+                            <div class="flex items-center justify-between"><span>✏️ Pencil:</span> <span>4 paperclips 📎</span></div>
+                            <div class="flex items-center justify-between bg-sky-100 p-1 rounded"><span>🖌️ Paintbrush:</span> <span>8 paperclips 📎</span></div>
+                        </div>
+                    `;
+                default:
+                    return `<i class="fa-solid fa-ruler-combined text-3xl text-sky-400"></i>`;
+            }
+        }
+
+        function finishQuiz() {
+            document.getElementById('quiz-view').classList.add('hidden');
+            document.getElementById('result-view').classList.remove('hidden');
+
+            const score = calculateCurrentScore();
+            const total = quizData.length;
+            const percentage = Math.round((score / total) * 100);
+            const wrong = total - score;
+
+            document.getElementById('res-score-number').innerText = `${score} / ${total}`;
+            document.getElementById('res-percentage').innerText = `${percentage}%`;
+            document.getElementById('res-correct-count').innerText = score;
+            document.getElementById('res-wrong-count').innerText = wrong;
+
+            const feedbackEl = document.getElementById('feedback-message');
+            if (percentage >= 80) {
+                feedbackEl.className = "p-4 bg-emerald-50 border border-emerald-200 rounded-2xl text-emerald-900 font-semibold text-sm max-w-xl mx-auto mb-8";
+                feedbackEl.innerHTML = `🌟 <strong>Outstanding Performance!</strong> You have mastered Year 1 Measurement concepts!`;
+                if (typeof confetti === 'function') {
+                    confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+                }
+            } else if (percentage >= 50) {
+                feedbackEl.className = "p-4 bg-sky-50 border border-sky-200 rounded-2xl text-sky-900 font-semibold text-sm max-w-xl mx-auto mb-8";
+                feedbackEl.innerHTML = `👍 <strong>Good Job!</strong> You answered most questions correctly. Review your answers below to learn more.`;
+            } else {
+                feedbackEl.className = "p-4 bg-amber-50 border border-amber-200 rounded-2xl text-amber-900 font-semibold text-sm max-w-xl mx-auto mb-8";
+                feedbackEl.innerHTML = `💪 <strong>Keep Practicing!</strong> Review the correct answers below and try the quiz again!`;
+            }
+
+            renderReviewSection();
+            populateCertificateData(score, total, percentage);
+        }
+
+        function renderReviewSection() {
+            const container = document.getElementById('review-container');
+            container.innerHTML = '';
+
+            quizData.forEach((q, idx) => {
+                const userAns = userAnswers[idx];
+                const isCorrect = userAns === q.correct;
+                const prefixes = ['A', 'B', 'C', 'D'];
+
+                const item = document.createElement('div');
+                item.className = `p-4 rounded-2xl border text-xs md:text-sm ${
+                    isCorrect ? 'bg-emerald-50/60 border-emerald-200' : 'bg-rose-50/60 border-rose-200'
+                }`;
+
+                item.innerHTML = `
+                    <div class="flex items-start justify-between gap-2 mb-2">
+                        <span class="font-bold text-slate-800">${idx + 1}. ${q.question}</span>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase ${
+                            isCorrect ? 'bg-emerald-200 text-emerald-900' : 'bg-rose-200 text-rose-900'
+                        }">
+                            ${isCorrect ? 'Correct ✓' : 'Incorrect ✗'}
+                        </span>
+                    </div>
+                    <div class="space-y-1 mb-2 text-slate-700 font-medium">
+                        <p>Your Answer: <strong class="${isCorrect ? 'text-emerald-700' : 'text-rose-700'}">${userAns !== null ? prefixes[userAns] + ') ' + q.options[userAns] : 'Not Answered'}</strong></p>
+                        ${!isCorrect ? `<p>Correct Answer: <strong class="text-emerald-700">${prefixes[q.correct]}) ${q.options[q.correct]}</strong></p>` : ''}
+                    </div>
+                    <div class="p-2 bg-white/80 rounded-xl border border-slate-200 text-slate-600 text-xs">
+                        💡 <strong>Explanation:</strong> ${q.explanation}
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        function toggleReviewSection() {
+            const reviewEl = document.getElementById('review-section');
+            reviewEl.classList.toggle('hidden');
+            if (!reviewEl.classList.contains('hidden')) {
+                reviewEl.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function populateCertificateData(score, total, percentage) {
+            document.getElementById('cert-pupil-name').innerText = pupilName || "Year 1 Pupil";
+            document.getElementById('cert-pupil-class').innerText = pupilClass || "1 DLP";
+            document.getElementById('cert-score-text').innerText = `${score} / ${total} (${percentage}%)`;
+
+            let grade = "Satisfactory";
+            let gradeColor = "text-sky-600";
+            if (percentage >= 80) {
+                grade = "Excellent (Cemerlang)";
+                gradeColor = "text-emerald-600";
+            } else if (percentage >= 60) {
+                grade = "Good (Keputusan Baik)";
+                gradeColor = "text-blue-600";
+            } else {
+                grade = "Completed (Lulus)";
+                gradeColor = "text-amber-600";
+            }
+
+            const certGradeEl = document.getElementById('cert-grade-text');
+            certGradeEl.innerText = grade;
+            certGradeEl.className = `heading-font text-xl md:text-2xl font-bold ${gradeColor}`;
+
+            const today = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('cert-date').innerText = today.toLocaleDateString('en-US', options);
+        }
+
+        function openCertificateModal() {
+            document.getElementById('certificate-modal').classList.remove('hidden');
+        }
+
+        function closeCertificateModal() {
+            document.getElementById('certificate-modal').classList.add('hidden');
+        }
+
+        function restartQuiz() {
+            document.getElementById('result-view').classList.add('hidden');
+            document.getElementById('review-section').classList.add('hidden');
+            document.getElementById('start-view').classList.remove('hidden');
+        }
+
+        function getQuizShareText() {
+            return `*Year 1 Mathematics DLP Quiz - Topic 6.0 Measurement*\n\n` +
+                   `✏️ Let's practice Length, Mass & Volume of Liquid!\n` +
+                   `🏆 Complete 20 DSKP-aligned questions & earn your certificate!\n` +
+                   `👩‍🏫 Disediakan Oleh: Cikgu Leela\n\n` +
+                   `👉 Click link to play: ${window.location.href}`;
+        }
+
+        function shareQuizToWhatsApp() {
+            const currentUrl = window.location.href;
+            if (currentUrl.startsWith('blob:') || currentUrl.includes('usercontent.goog')) {
+                showHostingHelpModal();
+                return;
+            }
+            const text = encodeURIComponent(getQuizShareText());
+            window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+        }
+
+        function shareQuizToTelegram() {
+            const currentUrl = window.location.href;
+            if (currentUrl.startsWith('blob:') || currentUrl.includes('usercontent.goog')) {
+                showHostingHelpModal();
+                return;
+            }
+            const text = encodeURIComponent(getQuizShareText());
+            window.open(`https://t.me/share/url?url=${encodeURIComponent(currentUrl)}&text=${text}`, '_blank');
+        }
+
+        function copyQuizLink() {
+            const currentUrl = window.location.href;
+            if (currentUrl.startsWith('blob:') || currentUrl.includes('usercontent.goog')) {
+                showHostingHelpModal();
+                return;
+            }
+            const tempInput = document.createElement('input');
+            tempInput.value = currentUrl;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            alertCustom('Quiz link copied to clipboard! You can now paste it into your WhatsApp / Telegram class group.');
+        }
+
+        function downloadQuizHtml() {
+            const htmlContent = document.documentElement.outerHTML;
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'Year1_Math_DLP_Measurement_Quiz.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        function shareQuizLink() {
+            if (window.location.href.startsWith('blob:') || window.location.href.includes('usercontent.goog')) {
+                showHostingHelpModal();
+            } else if (navigator.share) {
+                navigator.share({
+                    title: 'Year 1 Math DLP Measurement Quiz',
+                    text: 'Year 1 Mathematics DLP Revision Quiz (Topic 6.0 Measurement)',
+                    url: window.location.href
+                }).catch(() => {});
+            } else {
+                shareQuizToWhatsApp();
+            }
+        }
+
+        function getResultShareText() {
+            const score = calculateCurrentScore();
+            const total = quizData.length;
+            const percentage = Math.round((score / total) * 100);
+
+            return `🎓 *Year 1 Mathematics DLP Measurement Quiz Result*\n\n` +
+                   `👤 *Name:* ${pupilName || 'Pupil'}\n` +
+                   `🏫 *Class:* ${pupilClass || '1 DLP'}\n` +
+                   `📊 *Score:* ${score}/${total} (${percentage}%)\n` +
+                   `📘 *Topic:* 6.0 Measurement (Length, Mass & Volume)\n` +
+                   `👩‍🏫 *Prepared by:* Cikgu Leela\n\n` +
+                   `🎉 Certificate Earned!`;
+        }
+
+        function shareResultToWhatsApp() {
+            const text = encodeURIComponent(getResultShareText());
+            window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+        }
+
+        function copyResultSummary() {
+            const text = getResultShareText();
+            const tempInput = document.createElement('textarea');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            alertCustom('Result summary copied to clipboard! Paste it directly into your WhatsApp class group.');
+        }
+    </script>
+</body>
+</html>
